@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Assembly_Info",
+    "slug": "Assembly_Info",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Assembly_Info"
+}
