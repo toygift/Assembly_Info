@@ -4,7 +4,7 @@ import {View, Text, FlatList} from "react-native";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import Member from "../Components/Member";
 import X2JS from "x2js";
-
+const Hangul = require("hangul-js");
 const data2 = `<response>
 <header>
     <resultCode>00</resultCode>
@@ -10387,10 +10387,29 @@ const Members = () => {
     // setData2(rss.response.body.items);
     // console.log("rrr", rss.response.body.items.item[0]);
     let good = data;
-    const mo_data = good.map((item, index) => {
+    good.forEach(function (item) {
+        var dis = Hangul.disassemble(item.HG_NM, true);
+        var cho = dis.reduce(function (prev, elem) {
+            elem = elem[0] ? elem[0] : elem;
+            return prev + elem;
+        }, "");
+        item.DISASSEMBLED = cho;
+    });
+
+    var search = "강훈식";
+    var search1 = Hangul.disassemble(search).join(""); // ㄺ=>ㄹㄱ
+
+    good.filter(function (item) {
+        return item.HG_NM.includes(search) || item.DISASSEMBLED.includes(search1);
+    })
+        // 검색결과 ul 아래에 li 로 추가
+        .forEach(function (item) {
+            console.log("item", item);
+        });
+
+    good.map((item, index) => {
         rss.response.body.items.item.map((item2, index) => {
             if (item.HG_NM === item2.empNm && item.HJ_NM === item2.hjNm) {
-                console.log("ii", item2.jpgLink);
                 good[index].IMAGE = item2.jpgLink;
             }
         });
