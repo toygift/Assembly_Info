@@ -1,21 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from "react";
+import AppLoading from "expo-app-loading";
+import {NavigationContainer} from "@react-navigation/native";
+import Roots from "./Navigation/Roots";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const [ready, setReady] = useState(false);
+    useEffect(() => {
+        setReady(true);
+    }, []);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    if (!ready) {
+        return <AppLoading></AppLoading>;
+    }
+    return (
+        <NavigationContainer>
+            <Roots></Roots>
+        </NavigationContainer>
+    );
+}
