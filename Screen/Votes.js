@@ -7146,7 +7146,7 @@ const Votes = () => {
                                 });
                             } else if (e.nativeEvent.selectedSegmentIndex === 1) {
                                 old.sort(function (a, b) {
-                                    return a.RESULT_VOTE_MOD < b.RESULT_VOTE_MOD ? -1 : a.RESULT_VOTE_MOD > b.RESULT_VOTE_MOD ? 1 : 0;
+                                    return a.RESULT_VOTE_MOD < b.RESULT_VOTE_MOD ? 1 : a.RESULT_VOTE_MOD > b.RESULT_VOTE_MOD ? -1 : 0;
                                 });
                             } else {
                                 old.sort(function (a, b) {
