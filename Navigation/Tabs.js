@@ -16,9 +16,9 @@ const Tabs = () => {
     const isDark = colorScheme === "dark";
     return (
         <Tab.Navigator screenOptions={{headerShown: false}}>
-            <Tab.Screen name="본회의22" component={Votes}></Tab.Screen>
-            <Tab.Screen name="국회의원" component={Stack}></Tab.Screen>
-            <Tab.Screen name="본회의" component={Stack_Law}></Tab.Screen>
+            {/* <Tab.Screen name="본회의22" component={Votes}></Tab.Screen> */}
+            <Tab.Screen name="탭1" component={Stack}></Tab.Screen>
+            <Tab.Screen name="탭2" component={Stack_Law}></Tab.Screen>
         </Tab.Navigator>
     );
 };

@@ -12,8 +12,11 @@ const NativeStack = createNativeStackNavigator();
 const Stack = () => {
     const isDark = useColorScheme() === "dark";
     return (
-        <NativeStack.Navigator>
-            <NativeStack.Screen name="국회의원1" component={Members}></NativeStack.Screen>
+        <NativeStack.Navigator
+            screenOptions={{
+                headerShadowVisible: false,
+            }}>
+            <NativeStack.Screen name="국회의원" component={Members}></NativeStack.Screen>
             <NativeStack.Screen name="Member_Detail" component={Member_Detail} />
             <NativeStack.Screen name="Votes" component={Votes} />
         </NativeStack.Navigator>
