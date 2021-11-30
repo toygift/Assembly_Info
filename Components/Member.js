@@ -14,24 +14,24 @@ const Member = ({item}) => {
                     {item.HG_NM} ({item.SEX_GBN_NM})
                 </Text>
                 <View style={{flexDirection: "row"}}>
-                    <View style={{flex: 1, paddingRight: 14}}>
-                        <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
+                    <View style={{flex: 1, paddingRight: 14, justifyContent: "space-between"}}>
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.key_text}>정당</Text>
                             <Text style={[styles.key_poly_text, {color: makeFontColor(item.POLY_NM)}]}>{item.POLY_NM}</Text>
                         </View>
-                        <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.key_text}>선거구</Text>
                             <Text style={styles.value_text}>{item.ORIG_NM}</Text>
                         </View>
-                        <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.key_text}>재선</Text>
                             <Text style={styles.value_text}>{item.REELE_GBN_NM}</Text>
                         </View>
-                        <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
+                        {/* <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.key_text}>위원회</Text>
                             <Text style={styles.value_text}>{item.CMIT_NM}</Text>
-                        </View>
-                        <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
+                        </View> */}
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.key_text}>연락처</Text>
                             <Text style={styles.value_text}>{item.TEL_NO}</Text>
                         </View>
@@ -53,11 +53,11 @@ export default Member;
 const styles = StyleSheet.create({
     container: {flex: 1, backgroundColor: "yellow", paddingHorizontal: 20, paddingVertical: 18, flexDirection: "row", marginHorizontal: 16, marginVertical: 6, alignItems: "center", justifyContent: "space-between", borderRadius: 12, backgroundColor: "#ffffff"},
     name_text: {marginBottom: 16, fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: "#222222"},
-    key_poly_text: {fontSize: 14, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
-    key_text: {fontSize: 14, width: 55, fontWeight: "normal", fontStyle: "normal", color: "#919aa4"},
+    key_poly_text: {fontSize: 13, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
+    key_text: {fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", color: "#919aa4"},
     value_text: {
         color: "#222222",
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: "normal",
         fontStyle: "normal",
         // lineHeight: 13,
