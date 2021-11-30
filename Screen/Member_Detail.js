@@ -1,6 +1,8 @@
 import React from "react";
-import {View, Text, FlatList, Image} from "react-native";
+import {View, Text, FlatList, Image, ActivityIndicator} from "react-native";
 import Member_Law from "../Components/Member_Law";
+import {assemblyApi} from "../api";
+import {useQuery, useQueryClient} from "react-query";
 const data = [
     {
         BILL_ID: "PRC_U2B1K1T0P0A7S1E5N1H8C5I9F5F9S4",
@@ -723,32 +725,7 @@ const data = [
         COMMITTEE_ID: "9700008",
     },
 ];
-const man_data = {
-    HG_NM: "강훈식",
-    HJ_NM: "姜勳植",
-    ENG_NM: "KANG HOONSIK",
-    BTH_GBN_NM: "음",
-    BTH_DATE: "1973-10-24",
-    JOB_RES_NM: "간사",
-    POLY_NM: "더불어민주당",
-    ORIG_NM: "충남 아산시을",
-    ELECT_GBN_NM: "지역구",
-    CMIT_NM: "산업통상자원중소벤처기업위원회",
-    CMITS: "산업통상자원중소벤처기업위원회",
-    REELE_GBN_NM: "재선",
-    UNITS: "제20대, 제21대",
-    SEX_GBN_NM: "남",
-    TEL_NO: "02-784-1045~47",
-    E_MAIL: "gohoonsik@gmail.com",
-    HOMEPAGE: "http://blog.naver.com/kanghunsik",
-    STAFF: "신재동, 조재순",
-    SECRETARY: "김영호, 윤재광",
-    SECRETARY2: "이은빈, 정언주, 안재민, 이종혁, 김현미",
-    MONA_CD: "TRE2429O",
-    MEM_TITLE: "(현) 제20,21대 국회의원(재선)\r\n(현) 더불어민주당 충남도당위원장\r\n(현) 국회 산업통상자원중소벤처기업위원회 간사\r\n\r\n- 더불어민주당 수석대변인(전)\r\n- 국회 예산결산위원회 위원(전)\r\n- 국회 국토교통위원회 위원(전) \r\n- 국회 아동·여성·인권정책포럼 연구책임위원(전) \r\n- 국회 미세먼지대책특별위원회 위원(전)\r\n- 국회 운영위원회 위원(전)\r\n- 더불어민주당 원내대변인(전)\r\n- 더불어민주당 전략기획위원장(전)\r\n- 동국대언론정보대학원 신문방송학 겸임교수(전)\r\n- 뉴욕주립대학교 한국학연구소 객원연구원(전)\r\n- 건국대학교 총학생회장(전) \r\n- 건국대 경영학 학사(전) \r\n\r\n[충남 아산 지역사무실]\r\n충남 아산시 배방읍 배방로 22 삼영프라자 601호 \r\n041-548-5245 ",
-    ASSEM_ADDR: "의원회관 722호",
-    IMAGE: "http://www.assembly.go.kr/photo/9771007.jpg",
-};
+
 // const renderItem = ({item}) => {
 //     return <Member_Law item={item}></Member_Law>;
 // };
@@ -779,19 +756,34 @@ const renderHeader = item => {
         </View>
     );
 };
-const Member_Detail = () => {
-    return (
+const Member_Detail = ({
+    navigation: {setOptions},
+    route: {
+        params: {member_data},
+    },
+}) => {
+    const {isLoading: proposeLoading, data: proposeData, isRefetching: proposeIsRefetching} = useQuery(["member_propose", member_data], assemblyApi.member_propose);
+    if (proposeData) {
+        console.log("iii", proposeData);
+        // console.log("iii", proposeData.nwvrqwxyaytdsfvhu[1].row);
+    }
+    const loading = proposeLoading;
+    return loading ? (
+        <View style={{flex: 1, justifyContent: "center"}}>
+            <ActivityIndicator />
+        </View>
+    ) : proposeData ? (
         <FlatList
             ItemSeparatorComponent={() => {
                 return <View style={{height: 10}}></View>;
             }}
-            ListHeaderComponent={() => renderHeader(man_data)}
+            ListHeaderComponent={() => renderHeader(member_data)}
             keyExtractor={item => item.BILL_ID}
-            data={data}
+            data={proposeData.nzmimeepazxkubdpn[1].row}
             renderItem={({item}) => {
                 return <Member_Law item={item}></Member_Law>;
             }}></FlatList>
-    );
+    ) : null;
 };
 
 export default Member_Detail;

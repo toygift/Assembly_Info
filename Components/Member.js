@@ -5,7 +5,7 @@ import {makeFontColor} from "../colors";
 const Member = ({item}) => {
     const navigation = useNavigation();
     const goToDetail = () => {
-        navigation.navigate("Member_Detail", {});
+        navigation.navigate("Member_Detail", {member_data: item});
     };
     return (
         <Pressable style={styles.container} onPress={goToDetail}>
