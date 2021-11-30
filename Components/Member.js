@@ -53,11 +53,11 @@ export default Member;
 const styles = StyleSheet.create({
     container: {flex: 1, backgroundColor: "yellow", paddingHorizontal: 20, paddingVertical: 18, flexDirection: "row", marginHorizontal: 16, marginVertical: 6, alignItems: "center", justifyContent: "space-between", borderRadius: 12, backgroundColor: "#ffffff"},
     name_text: {marginBottom: 16, fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: "#222222"},
-    key_poly_text: {fontSize: 13, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
-    key_text: {fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", color: "#919aa4"},
+    key_poly_text: {fontSize: 14, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
+    key_text: {fontSize: 14, width: 55, fontWeight: "normal", fontStyle: "normal", color: "#919aa4"},
     value_text: {
         color: "#222222",
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: "normal",
         fontStyle: "normal",
         // lineHeight: 13,
