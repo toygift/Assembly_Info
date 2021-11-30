@@ -16,7 +16,7 @@ const Member = ({item}) => {
                 <View style={{flexDirection: "row"}}>
                     <View style={{flex: 1, paddingRight: 14}}>
                         <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
-                            <Text style={{fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"}}>정당명</Text>
+                            <Text style={{fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"}}>정당</Text>
                             <Text style={{color: makeFontColor(item.POLY_NM), fontSize: 13, fontWeight: "500", fontStyle: "normal", letterSpacing: 0}}>{item.POLY_NM}</Text>
                         </View>
                         <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
@@ -28,15 +28,19 @@ const Member = ({item}) => {
                             <Text style={{color: "#222222", fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0}}>{item.REELE_GBN_NM}</Text>
                         </View>
                         <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
-                            <Text style={{fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"}}>당선</Text>
-                            <Text style={{flex: 1, color: "#222222", fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0}}>{item.UNITS}</Text>
+                            <Text style={{fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"}}>위원회</Text>
+                            <Text style={{flex: 1, color: "#222222", fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0}}>{item.CMIT_NM}</Text>
                         </View>
-                        <View style={{flexDirection: "row", alignItems: "center"}}>
+                        <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
                             <Text style={{fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"}}>연락처</Text>
                             <Text style={{color: "#222222", fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0}}>{item.TEL_NO}</Text>
                         </View>
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
+                            <Text style={{fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"}}>사무실</Text>
+                            <Text style={{color: "#222222", fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0}}>{item.ASSEM_ADDR}</Text>
+                        </View>
                     </View>
-                    <Image style={{alignSelf: "flex-end", width: 75, height: 100, borderRadius: 8}} source={{uri: item.IMAGE}}></Image>
+                    <Image style={{width: 75, height: 100, borderRadius: 8}} source={{uri: item.IMAGE}}></Image>
                 </View>
             </View>
         </Pressable>

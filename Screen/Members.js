@@ -2984,6 +2984,7 @@ const Members = () => {
     const [value, setValue] = useState("");
 
     const rss = x2js.xml2js(data2);
+    let filtered = [];
     if (nowData) {
         nowData.nwvrqwxyaytdsfvhu[1].row.forEach(function (item) {
             var dis = Hangul.disassemble(item.HG_NM, true);
@@ -3002,10 +3003,13 @@ const Members = () => {
                 }
             });
         });
+        // const filtered = nowData.nwvrqwxyaytdsfvhu[1].row.filter(function (item) {
+        //     return item.HG_NM.includes(value) || item.DISASSEMBLED.includes(search1);
+        // });
+        filtered = nowData.nwvrqwxyaytdsfvhu[1].row.filter(function (item) {
+            return item.HG_NM.includes(value) || item.DISASSEMBLED.includes(search1);
+        });
     }
-    const filtered = nowData.nwvrqwxyaytdsfvhu[1].row.filter(function (item) {
-        return item.HG_NM.includes(value) || item.DISASSEMBLED.includes(search1);
-    });
 
     return nowLoading ? (
         <ActivityIndicator />
