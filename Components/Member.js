@@ -17,7 +17,7 @@ const Member = ({item}) => {
                     <View style={{flex: 1, paddingRight: 14}}>
                         <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
                             <Text style={styles.key_text}>정당</Text>
-                            <Text style={styles.key_poly_text}>{item.POLY_NM}</Text>
+                            <Text style={[styles.key_poly_text, {color: makeFontColor(item.POLY_NM)}]}>{item.POLY_NM}</Text>
                         </View>
                         <View style={{flexDirection: "row", alignItems: "center", paddingBottom: 6}}>
                             <Text style={styles.key_text}>선거구</Text>
@@ -51,7 +51,7 @@ export default Member;
 const styles = StyleSheet.create({
     container: {flex: 1, backgroundColor: "yellow", paddingHorizontal: 20, paddingVertical: 18, flexDirection: "row", marginHorizontal: 16, marginVertical: 6, alignItems: "center", justifyContent: "space-between", borderRadius: 12, backgroundColor: "#ffffff"},
     name_text: {marginBottom: 16, fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: "#222222"},
-    key_poly_text: {color: makeFontColor(item.POLY_NM), fontSize: 13, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
+    key_poly_text: {fontSize: 13, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
     key_text: {fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"},
     value_text: {
         color: "#222222",
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
         letterSpacing: 0,
     },
     image: {width: 75, height: 100, borderRadius: 8},
-})
+});
