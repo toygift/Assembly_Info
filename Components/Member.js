@@ -40,7 +40,9 @@ const Member = ({item}) => {
                             <Text style={styles.value_text}>{item.ASSEM_ADDR}</Text>
                         </View>
                     </View>
-                    <Image style={styles.image} source={{uri: item.IMAGE}}></Image>
+                    <View style={{justifyContent: "flex-end"}}>
+                        <Image style={styles.image} source={{uri: item.IMAGE}}></Image>
+                    </View>
                 </View>
             </View>
         </Pressable>
@@ -52,13 +54,13 @@ const styles = StyleSheet.create({
     container: {flex: 1, backgroundColor: "yellow", paddingHorizontal: 20, paddingVertical: 18, flexDirection: "row", marginHorizontal: 16, marginVertical: 6, alignItems: "center", justifyContent: "space-between", borderRadius: 12, backgroundColor: "#ffffff"},
     name_text: {marginBottom: 16, fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: "#222222"},
     key_poly_text: {fontSize: 13, fontWeight: "500", fontStyle: "normal", letterSpacing: 0},
-    key_text: {fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, color: "#919aa4"},
+    key_text: {fontSize: 13, width: 55, fontWeight: "normal", fontStyle: "normal", color: "#919aa4"},
     value_text: {
         color: "#222222",
         fontSize: 13,
         fontWeight: "normal",
         fontStyle: "normal",
-        letterSpacing: 0,
+        // lineHeight: 13,
     },
-    image: {width: 75, height: 100, borderRadius: 8},
+    image: {width: 75, height: 100, borderRadius: 8, alignItems: "flex-end"},
 });
