@@ -12,7 +12,6 @@ const x2js = new X2JS();
 const renderItem = ({item}) => {
     return <Member item={item}></Member>;
 };
-const getItemLayout = (data, index) => ({length: 175, offset: 175 * index, index});
 const FlatList = styled.FlatList``;
 const Members = () => {
     const queryClient = useQueryClient();
@@ -54,11 +53,11 @@ const Members = () => {
             <ActivityIndicator />
         </View>
     ) : nowData ? (
-        <View>
+        <View style={{flex: 1}}>
             <View style={{height: 56, backgroundColor: "#ffffff"}}>
                 <SearchBar value={value} inputStyle={{backgroundColor: "#f5f5f5", height: 44, fontSize: 15, color: "#a0a0a0"}} style={{marginHorizontal: 16}} onChangeText={setValue} placeholder="국회의원을 검색해보세요" theme="light" platform="ios"></SearchBar>
             </View>
-            <FlatList data={value === "" ? nowData.nwvrqwxyaytdsfvhu[1].row : filtered} renderItem={renderItem} contentContainerStyle={{backgroundColor: "#f2f3f5", marginTop: 6, paddingBottom: 100}} keyExtractor={keyExtractor} initialNumToRender={5} maxToRenderPerBatch={10} windowSize={10}></FlatList>
+            <FlatList data={value === "" ? nowData.nwvrqwxyaytdsfvhu[1].row : filtered} renderItem={renderItem} contentContainerStyle={{backgroundColor: "#f2f3f5", marginTop: 6, paddingBottom: 30}} keyExtractor={keyExtractor} initialNumToRender={5} maxToRenderPerBatch={10} windowSize={10}></FlatList>
         </View>
     ) : null;
 };
