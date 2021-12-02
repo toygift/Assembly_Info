@@ -7,11 +7,13 @@ import Title from "./Title";
 const Member_Law = ({item}) => {
     const navigation = useNavigation();
     const goToDetail = () => {
-        navigation.navigate("Votes");
+        if (item.PROC_RESULT === "원안가결" || item.PROC_RESULT === "수정가결") {
+            navigation.navigate("Votes", {BILL_ID: item.BILL_ID});
+        }
     };
-
+    const exist = item.PROC_RESULT === "원안가결" || item.PROC_RESULT === "수정가결";
     return (
-        <Pressable style={{paddingHorizontal: 16, marginHorizontal: 16, paddingVertical: 18, borderRadius: 8, backgroundColor: "#ffffff", borderStyle: "solid", borderWidth: 1, borderColor: "#e3e7e7"}} onPress={goToDetail}>
+        <Pressable style={{paddingHorizontal: 16, marginHorizontal: 16, paddingVertical: 18, borderRadius: 8, backgroundColor: "#ffffff", borderStyle: "solid", borderWidth: 1, borderColor: exist ? "black" : "#e3e7e7"}} onPress={goToDetail}>
             <Text style={{fontSize: 16, marginBottom: 12, fontWeight: "bold", fontStyle: "normal", lineHeight: 21, letterSpacing: 0, color: "#212121"}}>{item.BILL_NAME}</Text>
             <Title title={"제안일"} value={item.PROPOSE_DT}></Title>
             <Title title={"제안자"} value={item.PROPOSER}></Title>

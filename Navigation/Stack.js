@@ -30,7 +30,13 @@ const Stack = () => {
                     headerTintColor: "black",
                 })}
             />
-            <NativeStack.Screen name="Votes" component={Votes} />
+            <NativeStack.Screen
+                name="Votes"
+                component={Votes}
+                options={({navigation, route}) => ({
+                    headerTintColor: "black",
+                })}
+            />
         </NativeStack.Navigator>
     );
 };

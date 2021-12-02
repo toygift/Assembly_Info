@@ -6,8 +6,8 @@ import {useQuery, useQueryClient} from "react-query";
 import Title from "../Components/Title";
 import Member_Detail_Header from "../Components/Member_Detail_Header";
 
-const renderHeader = item => {
-    return <Member_Detail_Header item={item}></Member_Detail_Header>;
+const renderHeader = (item, length) => {
+    return <Member_Detail_Header item={item} length={length}></Member_Detail_Header>;
 };
 const Member_Detail = ({
     navigation: {setOptions},
@@ -37,7 +37,7 @@ const Member_Detail = ({
             }}
             style={{backgroundColor: "white"}}
             contentContainerStyle={{backgroundColor: "white", paddingBottom: 30}}
-            ListHeaderComponent={() => renderHeader(member_data)}
+            ListHeaderComponent={() => renderHeader(member_data, proposeData.nzmimeepazxkubdpn[1].row.length)}
             keyExtractor={item => item.BILL_ID}
             data={proposeData.nzmimeepazxkubdpn[1].row}
             renderItem={({item}) => {
