@@ -8,7 +8,7 @@ const Member_Law = ({item}) => {
     const navigation = useNavigation();
     const goToDetail = () => {
         if (item.PROC_RESULT === "원안가결" || item.PROC_RESULT === "수정가결") {
-            navigation.navigate("Votes", {BILL_ID: item.BILL_ID});
+            navigation.navigate("Votes", {BILL_ID: item.BILL_ID, TITLE: item.BILL_NAME});
         }
     };
     const exist = item.PROC_RESULT === "원안가결" || item.PROC_RESULT === "수정가결";

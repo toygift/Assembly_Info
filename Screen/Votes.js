@@ -25,16 +25,17 @@ renderItem = ({item}) => {
 const Votes = ({
     navigation: {setOptions},
     route: {
-        params: {BILL_ID},
+        params: {BILL_ID, TITLE},
     },
 }) => {
     useEffect(() => {
         setOptions({
-            title: "표결정보",
+            title: TITLE,
         });
     }, []);
     const [index, setIndex] = useState(0);
     const {isLoading: voteLoading, data: voteData, isRefetching: voteIsRefetching} = useQuery(["member_vote", BILL_ID], assemblyApi.member_vote);
+    let end_of_party = [];
     if (voteData) {
         voteData.nojepdqqaweusdfbi[1].row.sort(function (a, b) {
             return a.HG_NM < b.HG_NM ? -1 : a.HG_NM > b.HG_NM ? 1 : 0;
@@ -43,7 +44,6 @@ const Votes = ({
         const party = _.map(voteData.nojepdqqaweusdfbi[1].row, "POLY_NM");
         const type_of_party = _.uniq(party);
 
-        let end_of_party = [];
         for (let index = 0; index < type_of_party.length; index++) {
             let party = [];
             for (let index1 = 0; index1 < voteData.nojepdqqaweusdfbi[1].row.length; index1++) {
