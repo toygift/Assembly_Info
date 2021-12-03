@@ -22,8 +22,6 @@ const Member_Detail = ({
     }, []);
     const {isLoading: proposeLoading, data: proposeData, isRefetching: proposeIsRefetching} = useQuery(["member_propose", member_data], assemblyApi.member_propose);
     if (proposeData) {
-        console.log("iii", proposeData);
-        // console.log("iii", proposeData.nwvrqwxyaytdsfvhu[1].row);
     }
     const loading = proposeLoading;
     return loading ? (
@@ -41,7 +39,7 @@ const Member_Detail = ({
             keyExtractor={item => item.BILL_ID}
             data={proposeData.nzmimeepazxkubdpn[1].row}
             renderItem={({item}) => {
-                return <Member_Law item={item}></Member_Law>;
+                return <Member_Law member_data={member_data} item={item}></Member_Law>;
             }}></FlatList>
     ) : null;
 };

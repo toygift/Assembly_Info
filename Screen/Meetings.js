@@ -361,7 +361,6 @@ const Meetings = () => {
                     values={["법률안", "예산안", "기타", "결산"]}
                     selectedIndex={index}
                     onChange={e => {
-                        console.log("dd000====");
                         let old = [];
                         if (e.nativeEvent.selectedSegmentIndex === 0) {
                             old = data1;

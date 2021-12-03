@@ -25,11 +25,15 @@ const Member_Detail_Header = ({item, length}) => {
                 <Title title={"비서"} value={item.SECRETARY2}></Title>
                 <Title title={"악력"} value={item.POLY_NM}></Title>
             </View>
-            <View style={{backgroundColor: "#f3f4f4", height: 10, marginBottom: 8}}></View>
-            <View style={{backgroundColor: "#ffffff", height: 40, paddingHorizontal: 24, flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 6}}>
-                <Text style={{fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: makeFontColor(item.POLY_NM)}}>현재 발의중 안건</Text>
-                <Text style={{fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, textAlign: "right", color: "#919aa4"}}>총 {length}건</Text>
-            </View>
+            {length !== null ? (
+                <View>
+                    <View style={{backgroundColor: "#f3f4f4", height: 10, marginBottom: 8}}></View>
+                    <View style={{backgroundColor: "#ffffff", height: 40, paddingHorizontal: 24, flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 6}}>
+                        <Text style={{fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: makeFontColor(item.POLY_NM)}}>현재 발의중 안건</Text>
+                        <Text style={{fontSize: 13, fontWeight: "normal", fontStyle: "normal", letterSpacing: 0, textAlign: "right", color: "#919aa4"}}>총 {length}건</Text>
+                    </View>
+                </View>
+            ) : null}
         </View>
     );
 };

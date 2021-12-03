@@ -22,7 +22,6 @@ const Members = () => {
 
     let filtered = [];
     if (nowData && imagData) {
-        const rss = x2js.xml2js(imagData);
         nowData.nwvrqwxyaytdsfvhu[1].row.forEach(function (item) {
             var dis = Hangul.disassemble(item.HG_NM, true);
             var cho = dis.reduce(function (prev, elem) {
@@ -32,7 +31,7 @@ const Members = () => {
             item.DISASSEMBLED = cho;
         });
         var search1 = Hangul.disassemble(value).join(""); // ㄺ=>ㄹㄱ
-
+        const rss = x2js.xml2js(imagData);
         nowData.nwvrqwxyaytdsfvhu[1].row.map((item, index) => {
             rss.response.body.items.item.map((item2, index) => {
                 if (item.HG_NM === item2.empNm && item.HJ_NM === item2.hjNm) {

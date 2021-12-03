@@ -4,22 +4,12 @@ const width = Dimensions.get("window").width;
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import _ from "lodash";
 import {useQuery, useQueryClient} from "react-query";
-import Bdd from "../Components/Bdd";
+import Party from "../Components/Party";
 import {assemblyApi} from "../api";
+import Vote_Color_Block from "../Components/Vote_Color_Block";
 
 renderItem = ({item}) => {
-    const background_color = item.RESULT_VOTE_MOD === "찬성" ? "#b4e830" : item.RESULT_VOTE_MOD === "기권" ? "#ffe500" : item.RESULT_VOTE_MOD === "반대" ? "#ff8463" : "gray";
-    return (
-        <View style={{width: width / 3, paddingVertical: 10, flexDirection: "column", margin: 1, backgroundColor: background_color, justifyContent: "center", alignItems: "center"}}>
-            <View>
-                <Text style={{color: item.RESULT_VOTE_MOD === "불참" ? "black" : "black", fontSize: 20, fontWeight: "bold"}}>{item.HG_NM}</Text>
-            </View>
-            <View style={{flexDirection: "row", alignItems: "center"}}>
-                <Text style={{color: item.RESULT_VOTE_MOD === "불참" ? "black" : "black", fontWeight: "bold"}}>{item.POLY_NM}</Text>
-                {/* <View style={{marginLeft: 5, width: 10, height: 10, borderRadius: 10, backgroundColor: background_color}}></View> */}
-            </View>
-        </View>
-    );
+    return <Vote_Color_Block item={item}></Vote_Color_Block>;
 };
 
 const Votes = ({
@@ -35,6 +25,7 @@ const Votes = ({
     }, []);
     const [index, setIndex] = useState(0);
     const {isLoading: voteLoading, data: voteData, isRefetching: voteIsRefetching} = useQuery(["member_vote", BILL_ID], assemblyApi.member_vote);
+
     let end_of_party = [];
     if (voteData) {
         voteData.nojepdqqaweusdfbi[1].row.sort(function (a, b) {
@@ -54,6 +45,7 @@ const Votes = ({
             end_of_party.push({party: type_of_party[index], data: party});
         }
     }
+
     const loading = voteLoading;
     return loading ? (
         <View style={{flex: 1, justifyContent: "center"}}>
@@ -68,7 +60,14 @@ const Votes = ({
                     setIndex(e.nativeEvent.selectedSegmentIndex);
                 }}
             />
-            {index === 1 ? <Bdd item={end_of_party}></Bdd> : <FlatList keyExtractor={item => item.MONA_CD} numColumns={3} data={voteData.nojepdqqaweusdfbi[1].row} renderItem={renderItem}></FlatList>}
+            {index === 1 ? (
+                <Party
+                    item={end_of_party.sort(function (a, b) {
+                        return a.data.length < b.data.length ? 1 : a.data.length > b.data.length ? -1 : 0;
+                    })}></Party>
+            ) : (
+                <FlatList keyExtractor={item => item.MONA_CD} numColumns={3} data={voteData.nojepdqqaweusdfbi[1].row} renderItem={renderItem}></FlatList>
+            )}
         </View>
     ) : null;
 };
