@@ -13,9 +13,6 @@ const NativeStack = createNativeStackNavigator();
 
 const Stack = () => {
     const isDark = useColorScheme() === "dark";
-    function BackBtn() {
-        return <Image source={require("../resourse/imgBack.png")} style={{marginLeft: 10, width: 22, height: 22}} />;
-    }
     return (
         <NativeStack.Navigator
             screenOptions={{
@@ -23,7 +20,7 @@ const Stack = () => {
                 headerTitleStyle: {fontWeight: "bold"},
                 headerBackTitleVisible: false,
             }}>
-            <NativeStack.Screen name="국회의원" component={Members}></NativeStack.Screen>
+            <NativeStack.Screen options={{title: "국회의원"}} name="_국회의원" component={Members}></NativeStack.Screen>
             <NativeStack.Screen
                 name="Member_Detail"
                 component={Member_Detail}

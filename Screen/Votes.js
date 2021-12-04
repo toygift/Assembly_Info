@@ -27,22 +27,27 @@ const Votes = ({
     const {isLoading: voteLoading, data: voteData, isRefetching: voteIsRefetching} = useQuery(["member_vote", BILL_ID], assemblyApi.member_vote);
 
     let end_of_party = [];
-    if (voteData) {
-        voteData.nojepdqqaweusdfbi[1].row.sort(function (a, b) {
-            return a.HG_NM < b.HG_NM ? -1 : a.HG_NM > b.HG_NM ? 1 : 0;
-        });
 
-        const party = _.map(voteData.nojepdqqaweusdfbi[1].row, "POLY_NM");
-        const type_of_party = _.uniq(party);
+    const exist_data = _.has(voteData, "nojepdqqaweusdfbi");
+    console.log("99", exist_data);
+    if (exist_data) {
+        if (voteData) {
+            voteData.nojepdqqaweusdfbi[1].row.sort(function (a, b) {
+                return a.HG_NM < b.HG_NM ? -1 : a.HG_NM > b.HG_NM ? 1 : 0;
+            });
 
-        for (let index = 0; index < type_of_party.length; index++) {
-            let party = [];
-            for (let index1 = 0; index1 < voteData.nojepdqqaweusdfbi[1].row.length; index1++) {
-                if (type_of_party[index] === voteData.nojepdqqaweusdfbi[1].row[index1].POLY_NM) {
-                    party.push(voteData.nojepdqqaweusdfbi[1].row[index1]);
+            const party = _.map(voteData.nojepdqqaweusdfbi[1].row, "POLY_NM");
+            const type_of_party = _.uniq(party);
+
+            for (let index = 0; index < type_of_party.length; index++) {
+                let party = [];
+                for (let index1 = 0; index1 < voteData.nojepdqqaweusdfbi[1].row.length; index1++) {
+                    if (type_of_party[index] === voteData.nojepdqqaweusdfbi[1].row[index1].POLY_NM) {
+                        party.push(voteData.nojepdqqaweusdfbi[1].row[index1]);
+                    }
                 }
+                end_of_party.push({party: type_of_party[index], data: party});
             }
-            end_of_party.push({party: type_of_party[index], data: party});
         }
     }
 
@@ -66,7 +71,17 @@ const Votes = ({
                         return a.data.length < b.data.length ? 1 : a.data.length > b.data.length ? -1 : 0;
                     })}></Party>
             ) : (
-                <FlatList keyExtractor={item => item.MONA_CD} numColumns={3} data={voteData.nojepdqqaweusdfbi[1].row} renderItem={renderItem}></FlatList>
+                <FlatList
+                    keyExtractor={item => item.MONA_CD}
+                    numColumns={3}
+                    data={exist_data ? voteData.nojepdqqaweusdfbi[1].row : null}
+                    renderItem={renderItem}
+                    // contentContainerStyle={{flex: 1}}
+                    ListEmptyComponent={
+                        <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                            <Text>해당되는 데이터가 없습니다.</Text>
+                        </View>
+                    }></FlatList>
             )}
         </View>
     ) : null;
