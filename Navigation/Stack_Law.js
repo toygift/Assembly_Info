@@ -22,25 +22,10 @@ const Stack_Law = () => {
             }}>
             <NativeStack.Screen options={{title: "본회의"}} name="본회의2" component={Meetings}></NativeStack.Screen>
             <NativeStack.Screen
-                name="Member_Detail"
-                component={Member_Detail}
-                options={({navigation, route}) => ({
-                    headerTintColor: "black",
-                })}
-            />
-            <NativeStack.Screen
                 name="Votes"
                 component={Votes}
                 options={({navigation, route}) => ({
                     headerTintColor: "black",
-                })}
-            />
-            <NativeStack.Screen
-                name="Party_Votes"
-                component={Party_Votes}
-                options={({navigation, route}) => ({
-                    headerTintColor: "black",
-                    presentation: "modal",
                 })}
             />
             <NativeStack.Screen
