@@ -58,13 +58,17 @@ const Votes = ({
         </View>
     ) : voteData ? (
         <View style={{flex: 1}}>
-            <SegmentedControl
-                values={["이름순", "정당별"]}
-                selectedIndex={index}
-                onChange={e => {
-                    setIndex(e.nativeEvent.selectedSegmentIndex);
-                }}
-            />
+            <View style={{backgroundColor: "white", height: 50, paddingTop: 10}}>
+                <SegmentedControl
+                    values={["이름순", "정당별"]}
+                    selectedIndex={index}
+                    onChange={e => {
+                        setIndex(e.nativeEvent.selectedSegmentIndex);
+                    }}
+                    style={{marginHorizontal: 18, backgroundColor: "white"}}
+                />
+            </View>
+
             {index === 1 ? (
                 <Party
                     item={end_of_party.sort(function (a, b) {
@@ -73,10 +77,16 @@ const Votes = ({
             ) : (
                 <FlatList
                     keyExtractor={item => item.MONA_CD}
-                    numColumns={3}
+                    numColumns={4}
                     data={exist_data ? voteData.nojepdqqaweusdfbi[1].row : null}
                     renderItem={renderItem}
-                    // contentContainerStyle={{flex: 1}}
+                    columnWrapperStyle={{
+                        justifyContent: "flex-start",
+                        marginLeft: 16,
+                        marginRight: 12,
+                    }}
+                    contentContainerStyle={{paddingTop: 8}}
+                    ItemSeparatorComponent={() => <View style={{height: 4}}></View>}
                     ListEmptyComponent={
                         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                             <Text>해당되는 데이터가 없습니다.</Text>

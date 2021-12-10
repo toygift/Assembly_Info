@@ -28,3 +28,18 @@ export const makeFontColor = POLY_NM => {
             break;
     }
 };
+
+export const makeVoteColor = vote => {
+    switch (vote) {
+        case "찬성":
+            return "#5d9aff";
+        case "반대":
+            return "#fb4759";
+        case "불참":
+            return "#8f8d8d";
+        case "기권":
+            return "#ffb132";
+        default:
+            break;
+    }
+};
