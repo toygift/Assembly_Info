@@ -6,8 +6,8 @@ const Meeting = ({item}) => {
     const navigation = useNavigation();
     const goToDetail = () => {
         if (item.PROC_RESULT_CD === "원안가결" || item.PROC_RESULT_CD === "수정가결") {
-            console.log("오홍~~~~~~~~~~~~~~~~~~~₩", item.BILL_ID);
-            navigation.navigate("Votes", {BILL_ID: item.BILL_ID, TITLE: item.BILL_NAME});
+            console.log("90000", item);
+            navigation.navigate("Votes", {BILL_ID: item.BILL_ID, TITLE: item.BILL_NM});
         }
     };
     const background_color = item.RESULT_VOTE_MOD === "찬성" ? "#b4e830" : item.RESULT_VOTE_MOD === "기권" ? "#ffe500" : "#ff8463";
