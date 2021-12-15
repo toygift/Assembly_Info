@@ -25,7 +25,23 @@ const Party_Votes = ({
 
     return data ? (
         <View style={{flex: 1}}>
-            <FlatList keyExtractor={item => item.MONA_CD} numColumns={data.length >= 3 ? 3 : data.length} data={data} renderItem={renderItem}></FlatList>
+            <FlatList
+                keyExtractor={item => item.MONA_CD}
+                numColumns={4}
+                data={data}
+                renderItem={renderItem}
+                columnWrapperStyle={{
+                    justifyContent: "flex-start",
+                    marginLeft: 16,
+                    marginRight: 12,
+                }}
+                contentContainerStyle={{paddingTop: 8, paddingBottom: 18}}
+                ItemSeparatorComponent={() => <View style={{height: 4}}></View>}
+                ListEmptyComponent={
+                    <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                        <Text>해당되는 데이터가 없습니다.</Text>
+                    </View>
+                }></FlatList>
         </View>
     ) : null;
 };

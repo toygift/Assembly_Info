@@ -36,6 +36,14 @@ const Stack_Law = () => {
                     presentation: "modal",
                 })}
             />
+            <NativeStack.Screen
+                name="Party_Votes"
+                component={Party_Votes}
+                options={({navigation, route}) => ({
+                    headerTintColor: "black",
+                    presentation: "modal",
+                })}
+            />
         </NativeStack.Navigator>
     );
 };
