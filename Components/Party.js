@@ -23,21 +23,21 @@ const Party = ({item}) => {
             <View style={{flex: 1, padding: 16, backgroundColor: "#ffffff", marginTop: 10}}>
                 <Text style={{fontSize: 18, fontWeight: "bold", fontStyle: "normal", letterSpacing: 0, color: "#222222", paddingBottom: 10}}>{item.party}</Text>
                 <View style={{flex: 1, paddingHorizontal: 10, flexDirection: "row", height: 54, justifyContent: "space-between", alignItems: "center"}}>
-                    <Pressable onPress={() => goToDetail(agree, "찬성")} style={[styles.button, {backgroundColor: max === agree.length ? "#5d9aff" : "#ffffff"}]}>
-                        <Text style={[styles.text_style, {color: max === agree.length ? "#ffffff" : "#212121"}]}>찬성</Text>
-                        <Text style={[styles.text_style_number, {color: agree.length === 0 ? "#dcdcdc" : max === agree.length ? "#ffffff" : "#212121"}]}>{agree.length}</Text>
+                    <Pressable onPress={() => goToDetail(agree, "찬성")} style={[styles.button]}>
+                        <Text style={[styles.text_style, {color: max === agree.length ? "#000000" : "#7f8387"}]}>찬성</Text>
+                        <Text style={[styles.text_style_number, {color: agree.length === 0 ? "#dcdcdc" : max === agree.length ? "#5d9aff" : "#d5d8dd"}]}>{agree.length}</Text>
                     </Pressable>
-                    <Pressable onPress={() => goToDetail(disagree, "반대")} style={[styles.button, {backgroundColor: max === disagree.length ? "#fb4759" : "#ffffff"}]}>
-                        <Text style={[styles.text_style, {color: max === disagree.length ? "#ffffff" : "#212121"}]}>반대</Text>
-                        <Text style={[styles.text_style_number, {color: disagree.length === 0 ? "#dcdcdc" : max === disagree.length ? "#ffffff" : "#212121"}]}>{disagree.length}</Text>
+                    <Pressable onPress={() => goToDetail(disagree, "반대")} style={[styles.button]}>
+                        <Text style={[styles.text_style, {color: max === disagree.length ? "#000000" : "#7f8387"}]}>반대</Text>
+                        <Text style={[styles.text_style_number, {color: disagree.length === 0 ? "#dcdcdc" : max === disagree.length ? "#fb4759" : "#d5d8dd"}]}>{disagree.length}</Text>
                     </Pressable>
-                    <Pressable onPress={() => goToDetail(nonvote, "기권")} style={[styles.button, {backgroundColor: max === nonvote.length ? "#ffb132" : "#ffffff"}]}>
-                        <Text style={[styles.text_style, {color: max === nonvote.length ? "#ffffff" : "#212121"}]}>기권</Text>
-                        <Text style={[styles.text_style_number, {color: nonvote.length === 0 ? "#dcdcdc" : max === nonvote.length ? "#ffffff" : "#212121"}]}>{nonvote.length}</Text>
+                    <Pressable onPress={() => goToDetail(nonvote, "기권")} style={[styles.button]}>
+                        <Text style={[styles.text_style, {color: max === nonvote.length ? "#000000" : "#7f8387"}]}>기권</Text>
+                        <Text style={[styles.text_style_number, {color: nonvote.length === 0 ? "#dcdcdc" : max === nonvote.length ? "#ffb132" : "#d5d8dd"}]}>{nonvote.length}</Text>
                     </Pressable>
-                    <Pressable onPress={() => goToDetail(absent, "불참")} style={[styles.button, {backgroundColor: max === absent.length ? "#8f8d8d" : "#ffffff"}]}>
-                        <Text style={[styles.text_style, {color: max === absent.length ? "#ffffff" : "#212121"}]}>불참</Text>
-                        <Text style={[styles.text_style_number, {color: absent.length === 0 ? "#dcdcdc" : max === absent.length ? "#ffffff" : "#212121"}]}>{absent.length}</Text>
+                    <Pressable onPress={() => goToDetail(absent, "불참")} style={[styles.button]}>
+                        <Text style={[styles.text_style, {color: max === absent.length ? "#000000" : "#7f8387"}]}>불참</Text>
+                        <Text style={[styles.text_style_number, {color: absent.length === 0 ? "#dcdcdc" : max === absent.length ? "#8f8d8d" : "#d5d8dd"}]}>{absent.length}</Text>
                     </Pressable>
                 </View>
             </View>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         paddingBottom: 3,
     },
     text_style_number: {
-        fontSize: 17,
+        fontSize: 18,
         fontWeight: "bold",
         fontStyle: "normal",
         letterSpacing: 0,

@@ -47,6 +47,7 @@ const Members = () => {
         });
     }
     const loading = nowLoading || imgLoading;
+    console.log("img_loading", filtered, nowLoading, imgLoading);
     return loading ? (
         <View style={{flex: 1, justifyContent: "center"}}>
             <ActivityIndicator />

@@ -1,8 +1,8 @@
 const BASE_URL = "https://open.assembly.go.kr/portal/openapi/";
-const API_KEY = "KEY=65e670959c9d4b9cbc7a7d88aabef02e&Type=json";
+const API_KEY = "KEY=65e670959c9d4b9cbc7a7d88aabef02e&Type=JSON";
 
 export const assemblyApi = {
-    members: () => fetch(`${BASE_URL}nwvrqwxyaytdsfvhu?${API_KEY}&pIndex=1&pSize=300&AGE=21`).then(res => res.json()),
+    members: () => fetch(`${BASE_URL}nwvrqwxyaytdsfvhu?${API_KEY}&pIndex=1&pSize=1000&AGE=21`).then(res => res.json()),
     members_image: () => fetch(`http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?ServiceKey=GyPOyh7qviKuUDI7qAupKq9%2BdVJEi0VrAXx5NLNrNAG5Yjg19iCCADRdPUsjWaaJhUDqfmAyidOZ1u0zGV6gbw%3D%3D&numOfRows=1000&pageNo=1`).then(res => res.text().then(text => text)),
     member_propose: ({queryKey}) => {
         const [_key, member_data] = queryKey;
