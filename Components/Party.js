@@ -27,14 +27,17 @@ const Party = ({item}) => {
                         <Text style={[styles.text_style, {color: max === agree.length ? "#000000" : "#7f8387"}]}>찬성</Text>
                         <Text style={[styles.text_style_number, {color: agree.length === 0 ? "#dcdcdc" : max === agree.length ? "#5d9aff" : "#d5d8dd"}]}>{agree.length}</Text>
                     </Pressable>
+                    <View style={{width: 1, height: 10, backgroundColor: "#e8e8ef"}} />
                     <Pressable onPress={() => goToDetail(disagree, "반대")} style={[styles.button]}>
                         <Text style={[styles.text_style, {color: max === disagree.length ? "#000000" : "#7f8387"}]}>반대</Text>
                         <Text style={[styles.text_style_number, {color: disagree.length === 0 ? "#dcdcdc" : max === disagree.length ? "#fb4759" : "#d5d8dd"}]}>{disagree.length}</Text>
                     </Pressable>
+                    <View style={{width: 1, height: 10, backgroundColor: "#e8e8ef"}} />
                     <Pressable onPress={() => goToDetail(nonvote, "기권")} style={[styles.button]}>
                         <Text style={[styles.text_style, {color: max === nonvote.length ? "#000000" : "#7f8387"}]}>기권</Text>
                         <Text style={[styles.text_style_number, {color: nonvote.length === 0 ? "#dcdcdc" : max === nonvote.length ? "#ffb132" : "#d5d8dd"}]}>{nonvote.length}</Text>
                     </Pressable>
+                    <View style={{width: 1, height: 10, backgroundColor: "#e8e8ef"}} />
                     <Pressable onPress={() => goToDetail(absent, "불참")} style={[styles.button]}>
                         <Text style={[styles.text_style, {color: max === absent.length ? "#000000" : "#7f8387"}]}>불참</Text>
                         <Text style={[styles.text_style_number, {color: absent.length === 0 ? "#dcdcdc" : max === absent.length ? "#8f8d8d" : "#d5d8dd"}]}>{absent.length}</Text>

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {View, Text, FlatList, Dimensions, ActivityIndicator} from "react-native";
+import React, {useState, useEffect, Fragment} from "react";
+import {View, Text, FlatList, Dimensions, ActivityIndicator, SafeAreaView} from "react-native";
 const width = Dimensions.get("window").width;
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import _ from "lodash";
@@ -57,43 +57,46 @@ const Votes = ({
             <ActivityIndicator />
         </View>
     ) : voteData ? (
-        <View style={{flex: 1}}>
-            <View style={{backgroundColor: "white", height: 50, paddingTop: 10}}>
-                <SegmentedControl
-                    values={["이름순", "정당별"]}
-                    selectedIndex={index}
-                    onChange={e => {
-                        setIndex(e.nativeEvent.selectedSegmentIndex);
-                    }}
-                    style={{marginHorizontal: 18, backgroundColor: "white"}}
-                />
-            </View>
+        <Fragment>
+            <SafeAreaView style={{flex: 0, backgroundColor: "white"}} />
+            <SafeAreaView style={{flex: 1}}>
+                <View style={{backgroundColor: "white", height: 50, paddingTop: 10}}>
+                    <SegmentedControl
+                        values={["이름순", "정당별"]}
+                        selectedIndex={index}
+                        onChange={e => {
+                            setIndex(e.nativeEvent.selectedSegmentIndex);
+                        }}
+                        style={{marginHorizontal: 18, backgroundColor: "white"}}
+                    />
+                </View>
 
-            {index === 1 ? (
-                <Party
-                    item={end_of_party.sort(function (a, b) {
-                        return a.data.length < b.data.length ? 1 : a.data.length > b.data.length ? -1 : 0;
-                    })}></Party>
-            ) : (
-                <FlatList
-                    keyExtractor={item => item.MONA_CD}
-                    numColumns={4}
-                    data={exist_data ? voteData.nojepdqqaweusdfbi[1].row : null}
-                    renderItem={renderItem}
-                    columnWrapperStyle={{
-                        justifyContent: "flex-start",
-                        marginLeft: 16,
-                        marginRight: 12,
-                    }}
-                    contentContainerStyle={{paddingTop: 8}}
-                    ItemSeparatorComponent={() => <View style={{height: 4}}></View>}
-                    ListEmptyComponent={
-                        <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                            <Text>해당되는 데이터가 없습니다.</Text>
-                        </View>
-                    }></FlatList>
-            )}
-        </View>
+                {index === 1 ? (
+                    <Party
+                        item={end_of_party.sort(function (a, b) {
+                            return a.data.length < b.data.length ? 1 : a.data.length > b.data.length ? -1 : 0;
+                        })}></Party>
+                ) : (
+                    <FlatList
+                        keyExtractor={item => item.MONA_CD}
+                        numColumns={4}
+                        data={exist_data ? voteData.nojepdqqaweusdfbi[1].row : null}
+                        renderItem={renderItem}
+                        columnWrapperStyle={{
+                            justifyContent: "flex-start",
+                            marginLeft: 16,
+                            marginRight: 12,
+                        }}
+                        contentContainerStyle={{paddingTop: 8}}
+                        ItemSeparatorComponent={() => <View style={{height: 4}}></View>}
+                        ListEmptyComponent={
+                            <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                                <Text>해당되는 데이터가 없습니다.</Text>
+                            </View>
+                        }></FlatList>
+                )}
+            </SafeAreaView>
+        </Fragment>
     ) : null;
 };
 

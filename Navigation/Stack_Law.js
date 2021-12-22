@@ -19,13 +19,15 @@ const Stack_Law = () => {
                 headerShadowVisible: false,
                 headerTitleStyle: {fontWeight: "bold"},
                 headerBackTitleVisible: false,
+                headerShown: false,
             }}>
-            <NativeStack.Screen options={{title: "본회의"}} name="본회의2" component={Meetings}></NativeStack.Screen>
+            <NativeStack.Screen options={({navigation, route}) => ({})} name="본회의2" component={Meetings}></NativeStack.Screen>
             <NativeStack.Screen
                 name="Votes"
                 component={Votes}
                 options={({navigation, route}) => ({
                     headerTintColor: "black",
+                    headerShown: true,
                 })}
             />
             <NativeStack.Screen
@@ -34,6 +36,7 @@ const Stack_Law = () => {
                 options={({navigation, route}) => ({
                     headerTintColor: "black",
                     presentation: "modal",
+                    headerShown: true,
                 })}
             />
             <NativeStack.Screen
@@ -42,6 +45,7 @@ const Stack_Law = () => {
                 options={({navigation, route}) => ({
                     headerTintColor: "black",
                     presentation: "modal",
+                    headerShown: true,
                 })}
             />
         </NativeStack.Navigator>
