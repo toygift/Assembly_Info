@@ -11,7 +11,7 @@ import {useColorScheme} from "react-native";
 
 const NativeStack = createNativeStackNavigator();
 
-const Stack_Law = () => {
+const Stack_Meetings = () => {
     const isDark = useColorScheme() === "dark";
     return (
         <NativeStack.Navigator
@@ -52,4 +52,4 @@ const Stack_Law = () => {
     );
 };
 
-export default Stack_Law;
+export default Stack_Meetings;

@@ -11,7 +11,7 @@ import {useColorScheme} from "react-native";
 
 const NativeStack = createNativeStackNavigator();
 
-const Stack = () => {
+const Stack_Members = () => {
     const isDark = useColorScheme() === "dark";
     return (
         <NativeStack.Navigator
@@ -55,4 +55,4 @@ const Stack = () => {
     );
 };
 
-export default Stack;
+export default Stack_Members;
